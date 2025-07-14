@@ -6,8 +6,8 @@ export interface AirtableConfig {
 
 export const airtableConfig: AirtableConfig = {
   apiKey:
-    process.env.AIRTABLE_API_KEY ,
-  baseId: process.env.AIRTABLE_BASE_ID,
+    process.env.AIRTABLE_API_KEY ?? '',
+  baseId: process.env.AIRTABLE_BASE_ID ?? '',
   baseUrl: "https://api.airtable.com/v0",
 };
 
