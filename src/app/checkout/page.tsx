@@ -472,6 +472,7 @@ function CheckoutContent() {
                     onChange={handleInputChange}
                     className="w-full bg-minimal-gray-800 text-minimal-white rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-minimal-white/20 transition-all"
                     placeholder="Enter your full name"
+                    data-clarity-unmask="true"
                     required
                   />
                 </div>
@@ -491,6 +492,7 @@ function CheckoutContent() {
                     onChange={handleInputChange}
                     className="w-full bg-minimal-gray-800 text-minimal-white rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-minimal-white/20 transition-all"
                     placeholder="Enter your email address"
+                    data-clarity-unmask="true"
                     required
                   />
                 </div>
@@ -511,6 +513,7 @@ function CheckoutContent() {
                   onChange={handleInputChange}
                   className="w-full bg-minimal-gray-800 text-minimal-white rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-minimal-white/20 transition-all"
                   placeholder="Enter your phone number"
+                  data-clarity-unmask="true"
                   required
                 />
               </div>
@@ -530,6 +533,7 @@ function CheckoutContent() {
                   rows={4}
                   className="w-full bg-minimal-gray-800 text-minimal-white rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-minimal-white/20 transition-all resize-none"
                   placeholder="Enter your complete delivery address"
+                  data-clarity-unmask="true"
                   required
                 />
               </div>
@@ -549,6 +553,7 @@ function CheckoutContent() {
                   onChange={handleInputChange}
                   className="w-full bg-minimal-gray-800 text-minimal-white rounded-xl px-5 py-4 focus:outline-none focus:ring-2 focus:ring-minimal-white/20 transition-all"
                   placeholder="Enter your 5-6 digit pincode"
+                  data-clarity-unmask="true"
                   minLength={5}
                   maxLength={6}
                   required
