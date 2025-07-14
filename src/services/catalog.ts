@@ -8,7 +8,7 @@ export interface CatalogItemFields {
   description: string;
   long_description?: string;
   availability: string;
-  condition: string;
+  condition?: string;
   price: number;
   pre_discount_price?: number;
   link: string;

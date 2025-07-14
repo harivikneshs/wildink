@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { CatalogService, CatalogItemFields } from "@/services/catalog";
 import { OrderService, OrderFields } from "@/services/orders";
@@ -9,7 +9,7 @@ import {
   CheckoutFormData,
 } from "@/data-sources/localStorage/client";
 
-export default function CheckoutPage() {
+function CheckoutContent() {
   const searchParams = useSearchParams();
   const productId = searchParams.get("id");
 
@@ -629,5 +629,28 @@ export default function CheckoutPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+// Loading fallback component
+function CheckoutLoading() {
+  return (
+    <div className="min-h-screen bg-minimal-black flex items-center justify-center">
+      <div className="text-center">
+        <div className="text-minimal-white text-xl mb-4">
+          Loading checkout...
+        </div>
+        <div className="w-8 h-8 border-2 border-minimal-white border-t-transparent rounded-full animate-spin mx-auto"></div>
+      </div>
+    </div>
+  );
+}
+
+// Main component with Suspense boundary
+export default function CheckoutPage() {
+  return (
+    <Suspense fallback={<CheckoutLoading />}>
+      <CheckoutContent />
+    </Suspense>
   );
 }

@@ -17,6 +17,11 @@ export class CacheService {
    */
   static getAll(): CatalogItemFields[] | null {
     try {
+      // Check if localStorage is available (client-side only)
+      if (typeof window === "undefined" || !window.localStorage) {
+        return null;
+      }
+
       const cached = localStorage.getItem(this.CATALOG_CACHE_KEY);
       if (!cached) return null;
 
@@ -40,6 +45,11 @@ export class CacheService {
    */
   static getById(itemId: string): CatalogItemFields | null {
     try {
+      // Check if localStorage is available (client-side only)
+      if (typeof window === "undefined" || !window.localStorage) {
+        return null;
+      }
+
       const cacheKey = `${this.CATALOG_ITEM_CACHE_PREFIX}${itemId}`;
       const cached = localStorage.getItem(cacheKey);
       if (!cached) return null;
@@ -67,6 +77,11 @@ export class CacheService {
     ttl: number = this.DEFAULT_TTL
   ): void {
     try {
+      // Check if localStorage is available (client-side only)
+      if (typeof window === "undefined" || !window.localStorage) {
+        return;
+      }
+
       const entry: CacheEntry<CatalogItemFields[]> = {
         data: items,
         timestamp: Date.now(),
@@ -87,6 +102,11 @@ export class CacheService {
     ttl: number = this.DEFAULT_TTL
   ): void {
     try {
+      // Check if localStorage is available (client-side only)
+      if (typeof window === "undefined" || !window.localStorage) {
+        return;
+      }
+
       const cacheKey = `${this.CATALOG_ITEM_CACHE_PREFIX}${itemId}`;
       const entry: CacheEntry<CatalogItemFields> = {
         data: item,
@@ -104,6 +124,11 @@ export class CacheService {
    */
   static clearAll(): void {
     try {
+      // Check if localStorage is available (client-side only)
+      if (typeof window === "undefined" || !window.localStorage) {
+        return;
+      }
+
       localStorage.removeItem(this.CATALOG_CACHE_KEY);
 
       // Clear individual item caches
@@ -123,6 +148,11 @@ export class CacheService {
    */
   static clearById(itemId: string): void {
     try {
+      // Check if localStorage is available (client-side only)
+      if (typeof window === "undefined" || !window.localStorage) {
+        return;
+      }
+
       const cacheKey = `${this.CATALOG_ITEM_CACHE_PREFIX}${itemId}`;
       localStorage.removeItem(cacheKey);
     } catch (error) {
