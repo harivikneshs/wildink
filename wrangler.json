@@ -11,5 +11,9 @@
   "observability": {
     "enabled": true
   },
-  "upload_source_maps": true
+  "upload_source_maps": true,
+  "env": {
+    "AIRTABLE_API_KEY": "",
+    "AIRTABLE_BASE_ID": ""
+  }
 }
