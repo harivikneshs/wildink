@@ -33,6 +33,8 @@
   },
   "scripts": {
     "build": "NEXT_PRIVATE_STANDALONE=true next build",
+    "build:catalog": "node scripts/build-catalog.js",
+    "prebuild": "npm run build:catalog",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts",
     "check": "npm run build && tsc && wrangler deploy --dry-run",
     "deploy": "wrangler deploy",

@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { CatalogService, CatalogItemFields } from "@/services/catalog";
+import ProductImageCarousel from "@/components/ProductImageCarousel";
 
 interface ProductPageProps {
   params: {
@@ -138,27 +138,16 @@ export default function ProductPage({ params }: ProductPageProps) {
       {/* Product Content */}
       <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12 pb-32 lg:pb-12 lg:min-h-screen lg:flex lg:items-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full">
-          {/* Product Image */}
-          <div className="relative aspect-square overflow-hidden bg-minimal-gray-900 rounded-lg">
-            <Image
-              src={product.image_link}
-              alt={product.title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-
-            {/* Premium badge matching ProductCard style */}
-            {product.type && (
-              <div className="absolute top-3 left-3 px-3 py-1 bg-gradient-to-r from-minimal-black to-minimal-gray-800 text-minimal-white text-xs font-bold rounded-full shadow-lg border border-minimal-gray-700/50 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-minimal-white/20 to-transparent -translate-x-full animate-shimmer"></div>
-                <span className="relative z-10 drop-shadow-sm">
-                  {product.type}
-                </span>
-              </div>
-            )}
-          </div>
+          {/* Product Image Carousel */}
+          <ProductImageCarousel
+            images={[
+              product.image_link,
+              product.image_2_link,
+              product.image_3_link,
+            ].filter((img): img is string => Boolean(img))}
+            title={product.title}
+            type={product.type}
+          />
 
           {/* Product Details */}
           <div className="space-y-8">
